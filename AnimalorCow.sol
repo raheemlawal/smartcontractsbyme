@@ -7,7 +7,7 @@ abstract contract Animal {
 
 
 contract Cow is Animal {
-    function noise() public virtual override returns(string memory){
+    function noise() public pure override returns(string memory){
         return "moooo";
     }
 }
