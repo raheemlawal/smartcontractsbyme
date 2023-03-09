@@ -14,7 +14,7 @@ contract SoccerGame{
     }
 
     modifier isGameOver(){
-        if(teamOneScore >=5 || teamTwoScore >= 5){
+        if(teamOneScore <5 || teamTwoScore <5){
             _;
         }
     }
