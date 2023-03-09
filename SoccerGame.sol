@@ -1,17 +1,25 @@
 //SPDX-License-Identifier: MIT
 pragma solidity >0.5.0;
 
+//game is over when a team score 5 goals
+
 contract SoccerGame{
     
-    uint teamOneScore;
-    uint teamTwoScore;
+    uint8 teamOneScore;
+    uint8 teamTwoScore;
     
-    constructor(uint _teamOneScore, uint _teamTwoScore) {
+    constructor(uint8 _teamOneScore, uint8 _teamTwoScore) {
         teamOneScore = _teamOneScore;
         teamTwoScore = _teamTwoScore;
     }
 
-    function addGoal(uint teamId) private {
+    modifier isGameOver(){
+        if(teamOneScore >=5 || teamTwoScore >= 5){
+            _;
+        }
+    }
+
+    function addGoal(uint teamId) private isGameOver{
         if(teamId == 1){
             teamOneScore++;
         }
@@ -19,4 +27,5 @@ contract SoccerGame{
             teamTwoScore++;
         }
     }
+    
 }
